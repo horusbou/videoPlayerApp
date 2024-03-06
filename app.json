@@ -1,0 +1,8 @@
+{
+  "name": "AwesomeProject",
+  "displayName": "AwesomeProject",
+  "plugins": [
+    "react-native-google-cast",
+    "@config-plugins/react-native-google-cast"
+  ]
+}
