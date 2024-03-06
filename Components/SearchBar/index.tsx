@@ -1,15 +1,21 @@
 import { useRef, useState } from "react";
 import { TextInput, SafeAreaView, StyleSheet, View,Text, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { CloseButton, SearchButton } from "../../assets/icons";
-
-export const Search = ()=>{
-    const [text,setText] = useState("");
+interface Props{
+    handleSearch:(searchedValue:string)=>void;
+    searchedValue:string
+}
+export const Search = ({searchedValue,handleSearch}:Props)=>{
+    const [text,setText] = useState(searchedValue);
 
     const onSubmit = ()=>{
-        if(text.length>0){
-            setText('')
-            console.log(text)
+        if(text&&text.length>0){
+            handleSearch(text);
         }
+    }
+    const handleClean = ()=>{
+        setText('')
+        handleSearch('');
     }
 
     return (<View
@@ -25,7 +31,7 @@ export const Search = ()=>{
         />
         <Text style={style.TextButton}>
             {text.length>0?
-            <TouchableOpacity style={style.Icon} onPress={()=>setText('')}>
+            <TouchableOpacity style={style.Icon} onPress={handleClean}>
                 <CloseButton fill="black" width={30} height={30}  />
             </TouchableOpacity>
             :
