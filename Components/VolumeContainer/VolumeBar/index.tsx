@@ -8,7 +8,7 @@ interface Props {
   }
 
 
-const VolumeBar = ({
+export const VolumeBar = ({
     currentVolume,
     onSlideCapture,
     onSlideComplete,
@@ -45,5 +45,3 @@ const styles = StyleSheet.create({
       left:30,
     },
   });
-
-export default VolumeBar;

@@ -3,7 +3,7 @@ import { navigationItems } from "../../data";
 interface Props{
     selectCountry:(countryId:number)=>void
 }
-const Section = ({selectCountry}:Props)=>{
+export const Section = ({selectCountry}:Props)=>{
     return (
         <View style={style.container} >
             {navigationItems.map((item)=>(
@@ -41,5 +41,3 @@ const style = StyleSheet.create({
         textTransform:'capitalize'
     }
 })
-
-export default Section;

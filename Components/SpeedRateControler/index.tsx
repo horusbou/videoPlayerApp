@@ -3,7 +3,7 @@ import { Text } from "react-native";
 interface Props{
     handleSpeedRate:(el:number)=>void
 }
-const SpeedRateControler = ({handleSpeedRate}:Props)=>{
+export const SpeedRateControler = ({handleSpeedRate}:Props)=>{
     const rateLists = [0.5,1,1.5,2];
 
     return <TouchableOpacity style={styles.container}>
@@ -45,4 +45,3 @@ const styles = StyleSheet.create({
         color:'#ebebeb',
     }
 });
-export default SpeedRateControler;

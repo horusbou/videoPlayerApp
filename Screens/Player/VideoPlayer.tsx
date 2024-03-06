@@ -17,7 +17,7 @@ import Video, {
 import Orientation from 'react-native-orientation-locker';
 import {FullscreenClose, FullscreenOpen} from '../../assets/icons';
 import {PlayerControls, ProgressBar} from '../../Components';
-import { VideoScreenProps } from '../../Interfaces/VideoScreen';
+import { VideoScreenProps } from '../../Interfaces';
 import { useRoute } from '@react-navigation/native';
 
 interface State {

@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View,SafeAreaView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
-import { VideoItemType } from "../../../Interfaces/VideoItem";
-const VideoItem = ({item,onPress}:{item:VideoItemType,onPress:()=>void})=>{
+import { VideoItemType } from "../../../Interfaces";
+export const VideoItem = ({item,onPress}:{item:VideoItemType,onPress:()=>void})=>{
     return (<TouchableOpacity style={style.container} onPress={onPress}>
         <Text style={style.text}>{item.title}</Text>
       </TouchableOpacity>)
+
 }
 const style = StyleSheet.create({
     container: {
@@ -18,5 +19,3 @@ const style = StyleSheet.create({
         color:'black'
     }
 })
-
-export default VideoItem;

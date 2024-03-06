@@ -1,4 +1,4 @@
-import { VideoItemType } from "./Interfaces/VideoItem";
+import { NavigationItem,VideoItemType } from "./Interfaces";
 
 const videos:VideoItemType[] = [
     { id: 1, title: 'Video 1', url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' },
@@ -6,10 +6,10 @@ const videos:VideoItemType[] = [
     { id: 3, title: 'Video 3', url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
   ];
 
-  export const navigationItems = [
+  export const navigationItems:NavigationItem[] = [
     {
         id:1,
-        name:'trending',
+        name:'Trending',
         videos,
         isActive:true
     },
@@ -27,9 +27,8 @@ const videos:VideoItemType[] = [
     },
     {
         id:4,
-        name:'Tunies',
-        videos:videos.filter(el=>el.id!=1),
+        name:'Tunisia',
+        videos:null,
         isActive:false
     },
-
   ]

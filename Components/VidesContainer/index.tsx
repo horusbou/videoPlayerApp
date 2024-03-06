@@ -1,20 +1,28 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import VideoItem from "./VideoItem";
+import { VideoItem } from "./VideoItem";
 import { useNavigation } from "@react-navigation/native";
+import { VideoItemType, StackNavigation } from "../../Interfaces";
+import NoVideosMessage from "./NoVideoMsg";
 
 interface Props{
-    clicked:(id:number)=>void
-    videos:Array<Object>
+    videos: VideoItemType[] | null;
 }
-const VideoContainer = ({clicked,videos}:Props)=>{
-    const navigation = useNavigation();
+export const VideoContainer = ({videos}:Props)=>{
+    const navigation = useNavigation<StackNavigation>();
+
+    const clickedVideo = (url:string)=>{
+        navigation.navigate('Videos', {url})
+    }
+
+    if(videos===null)
+        return <NoVideosMessage />;
+
     return (<View style={style.container}>
         <FlatList
       data={videos}
       renderItem={({item})=>(
-        <VideoItem item={item} onPress={()=>navigation.navigate('Videos',{id:item.id,url:item.url})} />
+        <VideoItem item={item} onPress={()=>clickedVideo(item.url)} />
       )}
-
       keyExtractor={item => item.id.toString()}
       numColumns={2}
     />
@@ -27,5 +35,3 @@ const style = StyleSheet.create({
     },
 
 })
-
-export default VideoContainer;

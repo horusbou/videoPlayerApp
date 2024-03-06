@@ -19,11 +19,9 @@ import Video, {
 import Orientation from 'react-native-orientation-locker';
 import {FullscreenClose, FullscreenOpen, SpeedRate, VolumeUp} from '../../assets/icons';
 import {PlayerControls, ProgressBar} from '../../Components';
-import { VideoScreenProps } from '../../Interfaces/VideoScreen';
+import { VideoScreenProps } from '../../Interfaces';
 import { useRoute } from '@react-navigation/native';
-import SpeedRateControler from '../../Components/SpeedRateControler';
-import VolumeBar from '../../Components/VolumeContainer/VolumeBar';
-import MyComponent from '../../Components/CastButton';
+import {CastToTV, VolumeBar, SpeedRateControler} from '../../Components';
 
 interface State {
   fullscreen: boolean;
@@ -35,25 +33,27 @@ interface State {
   showVolumeControls:boolean,
   speed:number;
   volume:number;
+  url:string;
 }
 
 export const VideoPlayer: React.FC = () => {
   const videoRef = React.createRef<Video>();
   const route = useRoute<VideoScreenProps>()
-    const {id , url} = route.params;
+    const {url} = route.params;
 
     const [loading,setLoading] = useState(true);
-  const [state, setState] = useState<State>({
-    fullscreen: false,
-    play: false,
-    currentTime: 0,
-    duration: 0,
-    showControls: true,
-    showSpeedControls:false,
-    showVolumeControls:false,
-    speed:1,
-    volume:0.5,
-  });
+    const [state, setState] = useState<State>({
+        fullscreen: false,
+        play: false,
+        currentTime: 0,
+        duration: 0,
+        showControls: true,
+        showSpeedControls:false,
+        showVolumeControls:false,
+        speed:1,
+        volume:0.5,
+        url
+    });
 
   const Loading = () => {
     return (
@@ -143,7 +143,7 @@ export const VideoPlayer: React.FC = () => {
                             <VolumeUp/>
                             {state.showVolumeControls?<VolumeBar onSlideComplete={handleShowVolumeControles}  currentVolume={state.volume} onSlideCapture={hanldeVolume}  />:null}
                     </TouchableOpacity>
-                    <MyComponent />
+                    <CastToTV url={state.url} />
                 </TouchableOpacity>
 
 

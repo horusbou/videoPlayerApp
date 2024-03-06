@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { TextInput, SafeAreaView, StyleSheet, View,Text, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { CloseButton, SearchButton } from "../../assets/icons";
 
-const Search = ()=>{
+export const Search = ()=>{
     const [text,setText] = useState("");
 
     const onSubmit = ()=>{
@@ -66,5 +66,3 @@ const style = StyleSheet.create({
         // borderWidth:4
     }
 })
-
-export default Search;
